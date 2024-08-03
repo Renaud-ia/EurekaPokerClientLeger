@@ -1,5 +1,6 @@
 package domain.imports.services;
 
+import domain.core.valeurs.Room;
 import domain.imports.gestionnaires.GestionnaireRoom;
 import domain.exceptions.ErreurGestionRoom;
 import domain.imports.gestionnaires.GestionnaireRoomFabrique;
@@ -13,23 +14,25 @@ import java.util.List;
  * interface pour lancer les services des rooms
  */
 public class GestionRoomsService {
-    private HashMap<String, GestionnaireRoom> gestionnaires;
+    private HashMap<Room, GestionnaireRoom> gestionnaires;
 
     public GestionRoomsService() {
         gestionnaires = new HashMap<>();
     }
     public void initialiserRoom(String nomRoom) throws ErreurGestionRoom {
-        if (gestionnaires.containsKey(nomRoom)) {
+        Room room = Room.depuis_nom(nomRoom);
+
+        if (gestionnaires.containsKey(room)) {
             throw new ErreurGestionRoom("La room a déjà été initialisée");
         }
 
-        GestionnaireRoom nouveauGestionnaire = GestionnaireRoomFabrique.creerGestionnaireRoom(nomRoom);
+        GestionnaireRoom nouveauGestionnaire = GestionnaireRoomFabrique.creerGestionnaireRoom(room);
 
-        gestionnaires.put(nomRoom, nouveauGestionnaire);
+        gestionnaires.put(room, nouveauGestionnaire);
     }
 
-    public String ajouterDossier(String nomRoom, String cheminDossier) throws ErreurGestionRoom {
-        GestionnaireRoom gestionnaireRoom = obtGestionnaire(nomRoom);
+    public String ajouterDossier(Room room, String cheminDossier) throws ErreurGestionRoom {
+        GestionnaireRoom gestionnaireRoom = obtGestionnaire(room);
 
         return gestionnaireRoom.ajouterDossier(cheminDossier);
     }
@@ -54,11 +57,11 @@ public class GestionRoomsService {
         return autoDetections;
     }
 
-    private GestionnaireRoom obtGestionnaire(String nomRoom) throws ErreurGestionRoom {
-        if (!gestionnaires.containsKey(nomRoom)) {
+    private GestionnaireRoom obtGestionnaire(Room room) throws ErreurGestionRoom {
+        if (!gestionnaires.containsKey(room)) {
             throw new ErreurGestionRoom("La room n'a pas été initialisée");
         }
 
-        return gestionnaires.get(nomRoom);
+        return gestionnaires.get(room);
     }
 }

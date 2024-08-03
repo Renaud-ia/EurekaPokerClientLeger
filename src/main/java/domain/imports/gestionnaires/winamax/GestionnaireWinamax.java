@@ -13,13 +13,6 @@ public class GestionnaireWinamax extends GestionnaireRoom {
         super(Room.WINAMAX);
     }
     @Override
-    public List<ImportFichierService> fichiersImportables() {
-
-        //todo
-        return null;
-    }
-
-    @Override
     public AutoDetectionService autoDetection() {
         return new AutoDetectionWinamax(gestionnaireDossiers);
     }

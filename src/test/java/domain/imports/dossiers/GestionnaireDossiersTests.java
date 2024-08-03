@@ -36,10 +36,8 @@ public class GestionnaireDossiersTests {
 
         String cheminAbsolu = obtenirCheminFichier(cheminRelatif);
 
-        // Testez la méthode ajouterDossier
         String resultat = gestionnaireDossiers.ajouterDossier(cheminAbsolu);
 
-        // Vérifiez que le résultat est null, ce qui signifie que le dossier a été ajouté avec succès
         assertNull(resultat);
         assertTrue(gestionnaireDossiers.obtListeDossiers().contains(cheminAbsolu));
     }
@@ -110,10 +108,8 @@ public class GestionnaireDossiersTests {
     public void accepteDossierSiAucunFichierEtSousDossiersValides() {
         String cheminAbsolu = obtenirCheminFichier("dossier_vide_avec_sous_dossiers_valides");
 
-        // Testez la méthode ajouterDossier
         String resultat = gestionnaireDossiers.ajouterDossier(cheminAbsolu);
 
-        // Vérifiez que le résultat est null, ce qui signifie que le dossier a été ajouté avec succès
         assertNull(resultat);
         assertTrue(gestionnaireDossiers.obtListeDossiers().contains(cheminAbsolu));
     }
@@ -122,12 +118,10 @@ public class GestionnaireDossiersTests {
     public void refuseDossierSiAucunFichierEtUnSousDossierInvalide() {
         String cheminAbsolu = obtenirCheminFichier("dossier_vide_avec_sous_dossier_invalide");
 
-        // Testez la méthode ajouterDossier
         String resultat = gestionnaireDossiers.ajouterDossier(cheminAbsolu);
 
-        // Vérifiez que le résultat est null, ce qui signifie que le dossier a été ajouté avec succès
         assertNotNull(resultat);
-        assertTrue(!gestionnaireDossiers.obtListeDossiers().contains(cheminAbsolu));
+        assertFalse(gestionnaireDossiers.obtListeDossiers().contains(cheminAbsolu));
     }
 
     private String obtenirCheminFichier(String nomFichier) {
