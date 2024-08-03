@@ -1,13 +1,17 @@
 package domain.imports.services;
 
-import domain.imports.agregats.GestionnaireRoom;
-import domain.imports.exceptions.ErreurGestionRoom;
-import domain.imports.fabriques.GestionnaireRoomFabrique;
+import domain.imports.gestionnaires.GestionnaireRoom;
+import domain.exceptions.ErreurGestionRoom;
+import domain.imports.gestionnaires.GestionnaireRoomFabrique;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * crée les gestionnaires de room et les gardes en mémoire
+ * interface pour lancer les services des rooms
+ */
 public class GestionRoomsService {
     private HashMap<String, GestionnaireRoom> gestionnaires;
 
@@ -30,8 +34,8 @@ public class GestionRoomsService {
         return gestionnaireRoom.ajouterDossier(cheminDossier);
     }
 
-    public List<ImportFichierService> importFichierServices() {
-        List<ImportFichierService> fichiersImportables = new ArrayList<>();
+    public List<domain.imports.services.ImportFichierService> importFichierServices() {
+        List<domain.imports.services.ImportFichierService> fichiersImportables = new ArrayList<>();
 
         for (GestionnaireRoom gestionnaireRoom: gestionnaires.values()) {
             fichiersImportables.addAll(gestionnaireRoom.fichiersImportables());
@@ -40,8 +44,8 @@ public class GestionRoomsService {
         return fichiersImportables;
     }
 
-    public List<AutoDetectionService> autoDetectionServices() {
-        List<AutoDetectionService> autoDetections = new ArrayList<>();
+    public List<domain.imports.services.AutoDetectionService> autoDetectionServices() {
+        List<domain.imports.services.AutoDetectionService> autoDetections = new ArrayList<>();
 
         for (GestionnaireRoom gestionnaireRoom: gestionnaires.values()) {
             autoDetections.add(gestionnaireRoom.autoDetection());

@@ -1,6 +1,6 @@
 package domain.imports.services;
 
-import domain.imports.exceptions.ErreurGestionRoom;
+import domain.exceptions.ErreurGestionRoom;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
