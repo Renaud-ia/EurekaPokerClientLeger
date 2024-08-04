@@ -14,9 +14,11 @@ import java.util.List;
  * interface pour lancer les services des rooms
  */
 public class GestionRoomsService {
+    private final ServicesGestionnaireFabrique servicesGestionnaireFabrique;
     private HashMap<Room, GestionnaireRoom> gestionnaires;
 
-    public GestionRoomsService() {
+    public GestionRoomsService(ServicesGestionnaireFabrique servicesGestionnaireFabrique) {
+        this.servicesGestionnaireFabrique = servicesGestionnaireFabrique;
         gestionnaires = new HashMap<>();
     }
     public void initialiserRoom(String nomRoom) throws ErreurGestionRoom {
@@ -26,7 +28,8 @@ public class GestionRoomsService {
             throw new ErreurGestionRoom("La room a déjà été initialisée");
         }
 
-        GestionnaireRoom nouveauGestionnaire = GestionnaireRoomFabrique.creerGestionnaireRoom(room);
+        GestionnaireRoom nouveauGestionnaire =
+                GestionnaireRoomFabrique.creerGestionnaireRoom(servicesGestionnaireFabrique, room);
 
         gestionnaires.put(room, nouveauGestionnaire);
     }
@@ -37,7 +40,7 @@ public class GestionRoomsService {
         return gestionnaireRoom.ajouterDossier(cheminDossier);
     }
 
-    public List<domain.imports.services.ImportFichierService> importFichierServices() {
+    public List<ImportFichierService> importFichierServices() {
         List<domain.imports.services.ImportFichierService> fichiersImportables = new ArrayList<>();
 
         for (GestionnaireRoom gestionnaireRoom: gestionnaires.values()) {
@@ -47,7 +50,7 @@ public class GestionRoomsService {
         return fichiersImportables;
     }
 
-    public List<domain.imports.services.AutoDetectionService> autoDetectionServices() {
+    public List<AutoDetectionService> autoDetectionServices() {
         List<domain.imports.services.AutoDetectionService> autoDetections = new ArrayList<>();
 
         for (GestionnaireRoom gestionnaireRoom: gestionnaires.values()) {

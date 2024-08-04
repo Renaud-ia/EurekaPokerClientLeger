@@ -1,6 +1,5 @@
 package domain.imports.dossiers;
 
-import domain.imports.gestionnaires.NomFichierValide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -8,13 +7,17 @@ import org.mockito.stubbing.Answer;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class GestionnaireDossiersTests {
+    private PersistenceDossierRoom persistenceDossierRoom;
     private GestionnaireDossiers gestionnaireDossiers;
+    private ObservateurDossierImport observateurDossierImport;
 
     @BeforeEach
     public void setUp() {
@@ -27,7 +30,14 @@ public class GestionnaireDossiersTests {
             return nomFichier.startsWith("fichier_valide");
         });
 
-        gestionnaireDossiers = new GestionnaireDossiers(nomFichierValide);
+        // on mock la persistence
+        persistenceDossierRoom = Mockito.mock(PersistenceDossierRoom.class);
+        when(persistenceDossierRoom.obtListDossiers()).thenReturn(new ArrayList<String>());
+
+        // on mock l'observateur
+        observateurDossierImport = Mockito.mock(ObservateurDossierImport.class);
+
+        gestionnaireDossiers = new GestionnaireDossiers(observateurDossierImport, persistenceDossierRoom, nomFichierValide);
     }
 
     @Test
@@ -40,6 +50,19 @@ public class GestionnaireDossiersTests {
 
         assertNull(resultat);
         assertTrue(gestionnaireDossiers.obtListeDossiers().contains(cheminAbsolu));
+
+        verify(persistenceDossierRoom).ajouterDossier(cheminAbsolu);
+    }
+
+    @Test
+    public void supprimerDossier() {
+        String cheminAbsolu = obtenirCheminFichier("dossier_valide");
+
+        gestionnaireDossiers.ajouterDossier(cheminAbsolu);
+        gestionnaireDossiers.supprimerDossier(cheminAbsolu);
+
+        assertFalse(gestionnaireDossiers.obtListeDossiers().contains(cheminAbsolu));
+        verify(persistenceDossierRoom).supprimerDossier(cheminAbsolu);
     }
 
     @Test
@@ -93,6 +116,9 @@ public class GestionnaireDossiersTests {
 
         assertTrue(gestionnaireDossiers.obtListeDossiers().contains(cheminParent));
         assertFalse(gestionnaireDossiers.obtListeDossiers().contains(cheminEnfant));
+
+        verify(persistenceDossierRoom).ajouterDossier(cheminParent);
+        verify(persistenceDossierRoom).supprimerDossier(cheminEnfant);
     }
 
     @Test

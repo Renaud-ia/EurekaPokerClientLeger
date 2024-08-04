@@ -1,4 +1,4 @@
-package domain.imports.gestionnaires;
+package domain.imports.dossiers;
 
 public interface NomFichierValide {
     boolean fichierValide(String nomFichier);
