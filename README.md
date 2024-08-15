@@ -2,17 +2,17 @@
 
 Eureka Poker Replayer est un outil open-source conçu pour les joueurs de poker désireux d'améliorer leur jeu grâce à l'analyse approfondie de leurs mains jouées. Ce projet est une refonte intégrale de la version client lourd vers un client léger moderne, intégrant des services web et des outils d'intelligence artificielle pour offrir une analyse avancée.
 
+Le client léger est en cours de développement ainsi que les services web associés
+v0.1 prévue pour fin septembre 2024
+
+Consultez mon discord pour plus d'infos : https://discord.gg/aKSJfV7knG
+
 # Fonctionnalités
 
 - Replayer de main de poker : Revivez vos mains jouées avec une interface utilisateur intuitive et fluide.
 - Analyse IA : Utilisez des outils d'IA pour analyser les décisions de vos adversaires, en particulier connaître les ranges les plus probables de vos adversaires
 - Intégration web : Bénéficiez d'une intégration avec des services web pour bénéficier à tout moment de vos données
 - Open Source : Le code source du replayer est ouvert à la contribution et à la personnalisation, disponible sur GitHub.
-
-Le client léger, il est en cours de développement ainsi que les services web associés
-v0.1 prévue pour fin septembre 2024
-
-Consultez mon discord pour plus d'infos : https://discord.gg/aKSJfV7knG
 
 # Installation
 ## Prérequis
