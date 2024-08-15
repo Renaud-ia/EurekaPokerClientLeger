@@ -1,7 +1,8 @@
-Eureka Poker Replayer
+# Eureka Poker Replayer
 
 Eureka Poker Replayer est un outil open-source conçu pour les joueurs de poker désireux d'améliorer leur jeu grâce à l'analyse approfondie de leurs mains jouées. Ce projet est une refonte intégrale de la version client lourd vers un client léger moderne, intégrant des services web et des outils d'intelligence artificielle pour offrir une analyse avancée.
-Fonctionnalités
+
+# Fonctionnalités
 
 - Replayer de main de poker : Revivez vos mains jouées avec une interface utilisateur intuitive et fluide.
 - Analyse IA : Utilisez des outils d'IA pour analyser les décisions de vos adversaires, en particulier connaître les ranges les plus probables de vos adversaires
@@ -13,23 +14,23 @@ v0.1 prévue pour fin septembre 2024
 
 Consultez mon discord pour plus d'infos : https://discord.gg/aKSJfV7knG
 
-Installation
-Prérequis
+# Installation
+## Prérequis
 
 - Java 21 ou version ultérieure
 - Gradle (pour la gestion des dépendances)
 
-Étapes d'installation
+## Étapes d'installation
 
-    Clonez le dépôt GitHub :
+Clonez le dépôt GitHub :
 
-```console
+```
 git clone https://github.com/votre_nom_utilisateur/EurekaPokerClientLeger.git
 ```
 
 Accédez au répertoire du projet :
 
-```console
+```
 cd EurekaPokerClientLeger
 ```
 
@@ -41,10 +42,11 @@ Lancez l'application :
 java -jar target/EurekaPokerReplayer.jar
 ```
 
-Services Web
+# Services Web
 
 Eureka Poker Replayer fonctionne en tandem avec des services web payants pour offrir des fonctionnalités avancées telles que l'analyse basée sur l'intelligence artificielle. Ces services sont indispensables pour accéder à l'ensemble des fonctionnalités du replayer, mais ne sont pas inclus dans le code open source. Ils sont disponibles via un abonnement payant et soumis à des conditions d'utilisation spécifiques.
-Contribuer
+
+# Contribuer
 
 Les contributions sont les bienvenues ! Si vous souhaitez contribuer à Eureka Poker Replayer, veuillez suivre ces étapes :
 
@@ -54,10 +56,11 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à Eureka P
 - Pushez sur la branche (git push origin ma_nouvelle_fonctionnalite).
 - Créez une Pull Request.
 
-Rejoignez notre communauté
+# Rejoignez notre communauté
 
-Pour discuter du projet, poser des questions, ou proposer des idées, rejoignez notre serveur Discord : Eureka Poker Discord.
-Licence
+Pour discuter du projet, poser des questions, ou proposer des idées, rejoignez notre serveur Discord :  https://discord.gg/aKSJfV7knG
+
+# Licence
 
 Le code source de Eureka Poker Replayer est distribué sous la licence Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Vous êtes libre de :
 
@@ -66,5 +69,5 @@ Le code source de Eureka Poker Replayer est distribué sous la licence Creative 
 
 Sous les conditions suivantes :
 
-    Attribution : Vous devez donner le crédit approprié, fournir un lien vers la licence, et indiquer si des modifications ont été effectuées.
-    NonCommercial : Vous ne pouvez pas utiliser le matériel à des fins commerciales.
+- Attribution : Vous devez donner le crédit approprié, fournir un lien vers la licence, et indiquer si des modifications ont été effectuées.
+- NonCommercial : Vous ne pouvez pas utiliser le matériel à des fins commerciales.
