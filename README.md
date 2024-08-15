@@ -36,11 +36,7 @@ cd EurekaPokerClientLeger
 
 Compilez et packagez le projet en utilisant Gradle :
 
-Lancez l'application :
-
-```console
-java -jar target/EurekaPokerReplayer.jar
-```
+Lancez l'application 
 
 # Services Web
 
