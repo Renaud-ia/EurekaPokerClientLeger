@@ -1,2 +1,2 @@
-rootProject.name = "EurekaClientLourdV2"
+rootProject.name = "EurekaClientLeger"
 

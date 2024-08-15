@@ -14,16 +14,13 @@ import java.util.List;
  * interface pour lancer les services des rooms
  */
 public class GestionRoomsService {
-    private final ServicesGestionnaireFabrique servicesGestionnaireFabrique;
-    private HashMap<Room, GestionnaireRoom> gestionnaires;
+    private final HashMap<Room, GestionnaireRoom> gestionnaires;
 
-    public GestionRoomsService(ServicesGestionnaireFabrique servicesGestionnaireFabrique) {
-        this.servicesGestionnaireFabrique = servicesGestionnaireFabrique;
-        gestionnaires = new HashMap<>();
+    public GestionRoomsService() {
+        this.gestionnaires = new HashMap<>();
     }
-    public void initialiserRoom(String nomRoom) throws ErreurGestionRoom {
-        Room room = Room.depuis_nom(nomRoom);
-
+    public void initialiserRoom(Room room, ServicesGestionnaireFabrique servicesGestionnaireFabrique)
+            throws ErreurGestionRoom {
         if (gestionnaires.containsKey(room)) {
             throw new ErreurGestionRoom("La room a déjà été initialisée");
         }

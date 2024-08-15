@@ -15,7 +15,16 @@ public abstract class ImportFichierService {
     }
 
     public void importer() {
-        //todo
+        // todo supprimer
+        System.out.println("Fichier en cours d'import: " + cheminFichier);
+        lireFichier();
+        sauvegarderPartie();
+    }
+
+    protected abstract void lireFichier();
+
+    protected void sauvegarderPartie() {
+        // todo
     }
 
     public void ajouterChemin(Path path) {

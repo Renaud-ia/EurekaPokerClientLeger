@@ -1,5 +1,6 @@
 package domain.imports.services;
 
+import domain.core.valeurs.Room;
 import domain.imports.dossiers.PersistenceDossierRoom;
 import domain.exceptions.ErreurGestionRoom;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,11 +28,11 @@ public class GestionRoomsServiceTest {
 
     @Test
     public void refuseDeuxCreationsMemeRoom() {
-        GestionRoomsService gestionRoomsService = new GestionRoomsService(servicesGestionnaireFabrique);
+        GestionRoomsService gestionRoomsService = new GestionRoomsService();
 
-        String nomRoom = "Winamax";
+        Room room = Room.WINAMAX;
 
-        assertDoesNotThrow(() -> gestionRoomsService.initialiserRoom(nomRoom));
-        assertThrows(ErreurGestionRoom.class, () -> gestionRoomsService.initialiserRoom(nomRoom));
+        assertDoesNotThrow(() -> gestionRoomsService.initialiserRoom(room, servicesGestionnaireFabrique));
+        assertThrows(ErreurGestionRoom.class, () -> gestionRoomsService.initialiserRoom(room, servicesGestionnaireFabrique));
     }
 }
