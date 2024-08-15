@@ -40,7 +40,7 @@ Lancez l'application
 
 # Services Web
 
-Eureka Poker Replayer fonctionne en tandem avec des services web payants pour offrir des fonctionnalités avancées telles que l'analyse basée sur l'intelligence artificielle. Ces services sont indispensables pour accéder à l'ensemble des fonctionnalités du replayer, mais ne sont pas inclus dans le code open source. Ils sont disponibles via un abonnement payant et soumis à des conditions d'utilisation spécifiques.
+Eureka Poker Replayer fonctionne en tandem avec des services web payants pour offrir des fonctionnalités avancées telles que l'analyse basée sur l'intelligence artificielle. Ces services sont indispensables pour accéder à l'ensemble des fonctionnalités du replayer, mais ne sont pas inclus dans le code open source. 
 
 # Contribuer
 
