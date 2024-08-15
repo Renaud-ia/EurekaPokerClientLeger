@@ -8,33 +8,38 @@ Fonctionnalités
 - Intégration web : Bénéficiez d'une intégration avec des services web pour bénéficier à tout moment de vos données
 - Open Source : Le code source du replayer est ouvert à la contribution et à la personnalisation, disponible sur GitHub.
 
+Le client léger, il est en cours de développement ainsi que les services web associés
+v0.1 prévue pour fin septembre 2024
+
+Consultez mon discord pour plus d'infos : https://discord.gg/aKSJfV7knG
+
 Installation
 Prérequis
 
-    Java 21 ou version ultérieure
-    Gradle (pour la gestion des dépendances)
+- Java 21 ou version ultérieure
+- Gradle (pour la gestion des dépendances)
 
 Étapes d'installation
 
     Clonez le dépôt GitHub :
 
-    bash
-
-git clone https://github.com/votre_nom_utilisateur/EurekaPokerReplayer.git
+```console
+git clone https://github.com/votre_nom_utilisateur/EurekaPokerClientLeger.git
+```
 
 Accédez au répertoire du projet :
 
-bash
-
-cd EurekaPokerReplayer
+```console
+cd EurekaPokerClientLeger
+```
 
 Compilez et packagez le projet en utilisant Gradle :
 
 Lancez l'application :
 
-bash
-
-    java -jar target/EurekaPokerReplayer.jar
+```console
+java -jar target/EurekaPokerReplayer.jar
+```
 
 Services Web
 
@@ -43,11 +48,11 @@ Contribuer
 
 Les contributions sont les bienvenues ! Si vous souhaitez contribuer à Eureka Poker Replayer, veuillez suivre ces étapes :
 
-    Fork le dépôt.
-    Créez une branche pour votre fonctionnalité (git checkout -b ma_nouvelle_fonctionnalite).
-    Commitez vos modifications (git commit -m 'Ajout de ma nouvelle fonctionnalité').
-    Pushez sur la branche (git push origin ma_nouvelle_fonctionnalite).
-    Créez une Pull Request.
+- Fork le dépôt.
+- Créez une branche pour votre fonctionnalité (git checkout -b ma_nouvelle_fonctionnalite).
+- Commitez vos modifications (git commit -m 'Ajout de ma nouvelle fonctionnalité').
+- Pushez sur la branche (git push origin ma_nouvelle_fonctionnalite).
+- Créez une Pull Request.
 
 Rejoignez notre communauté
 
@@ -56,8 +61,8 @@ Licence
 
 Le code source de Eureka Poker Replayer est distribué sous la licence Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Vous êtes libre de :
 
-    Partager : Copier et redistribuer le matériel sous n'importe quel format.
-    Adapter : Remixer, transformer et construire sur le matériel.
+- Partager : Copier et redistribuer le matériel sous n'importe quel format.
+- Adapter : Remixer, transformer et construire sur le matériel.
 
 Sous les conditions suivantes :
 
