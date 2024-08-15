@@ -1,19 +1,10 @@
 package domain.imports.gestionnaires.winamax;
 
-import domain.imports.dossiers.GestionnaireDossiers;
-import domain.imports.gestionnaires.NomFichierValide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.mockito.stubbing.Answer;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
 
 public class NomFichierValideWinamaxTest {
     private NomFichierValideWinamax nomFichierValideWinamax;

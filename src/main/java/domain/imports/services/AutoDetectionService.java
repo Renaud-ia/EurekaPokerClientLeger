@@ -1,6 +1,5 @@
 package domain.imports.services;
 
-import domain.core.valeurs.Room;
 import domain.imports.dossiers.GestionnaireDossiers;
 
 import java.io.File;

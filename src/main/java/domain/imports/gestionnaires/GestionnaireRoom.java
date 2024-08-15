@@ -1,10 +1,15 @@
 package domain.imports.gestionnaires;
 
-import domain.core.valeurs.Room;
+import domain.imports.dossiers.NomFichierValide;
+import domain.imports.dossiers.ObservateurDossierImport;
+import domain.imports.dossiers.PersistenceDossierRoom;
 import domain.imports.dossiers.GestionnaireDossiers;
 import domain.imports.enregistrement.GestionnaireParties;
+import domain.imports.enregistrement.ObservateurImportParties;
+import domain.imports.enregistrement.PersistenceImportParties;
 import domain.imports.services.AutoDetectionService;
 import domain.imports.services.ImportFichierService;
+import domain.imports.services.ServicesGestionnaireFabrique;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,16 +25,20 @@ import java.util.stream.Stream;
  * gère les logs des erreurs
  */
 public abstract class GestionnaireRoom {
-    private final FabriqueServicesRoom fabriqueServicesRoom;
+    private final ServicesGestionnaireFabrique servicesGestionnaireFabrique;
     protected final GestionnaireDossiers gestionnaireDossiers;
     protected final GestionnaireParties gestionnaireParties;
-    protected GestionnaireRoom(Room room) {
-        this.fabriqueServicesRoom = new FabriqueServicesRoom(room);
+    protected GestionnaireRoom(ServicesGestionnaireFabrique servicesGestionnaireFabrique) {
+        this.servicesGestionnaireFabrique = servicesGestionnaireFabrique;
 
-        NomFichierValide nomFichierValide = fabriqueServicesRoom.obtNomFichierValide();
+        NomFichierValide nomFichierValide = servicesGestionnaireFabrique.obtNomFichierValide();
+        PersistenceDossierRoom persistenceDossierRoom = servicesGestionnaireFabrique.obtPersistenceDossiers();
+        ObservateurDossierImport observateurDossierImport = servicesGestionnaireFabrique.obtObservateurDossiers();
+        this.gestionnaireDossiers = new GestionnaireDossiers(observateurDossierImport, persistenceDossierRoom, nomFichierValide);
 
-        this.gestionnaireDossiers = new GestionnaireDossiers(nomFichierValide);
-        this.gestionnaireParties = new GestionnaireParties();
+        PersistenceImportParties persistenceImportParties = servicesGestionnaireFabrique.obtPersistenceImportParties();
+        ObservateurImportParties observateurImportParties = servicesGestionnaireFabrique.obtOservateurImportParties();
+        this.gestionnaireParties = new GestionnaireParties(persistenceImportParties, observateurImportParties);
     }
 
     /**
@@ -56,7 +65,7 @@ public abstract class GestionnaireRoom {
         try (Stream<Path> stream = Files.walk(chemin)) {
             for (Path path : (Iterable<Path>) stream::iterator) {
                 if (!fichierEstValide(path)) continue;
-                ImportFichierService importFichierService = fabriqueServicesRoom.obtImportFichierService();
+                ImportFichierService importFichierService = servicesGestionnaireFabrique.obtImportFichierService();
                 importFichierService.ajouterChemin(path);
                 importFichierService.ajouterGestionnaireParties(this.gestionnaireParties);
                 fichiersImportables.add(importFichierService);
@@ -70,7 +79,7 @@ public abstract class GestionnaireRoom {
     }
 
     private boolean fichierEstValide(Path chemin) {
-        NomFichierValide nomFichierValide = fabriqueServicesRoom.obtNomFichierValide();
+        NomFichierValide nomFichierValide = servicesGestionnaireFabrique.obtNomFichierValide();
 
         return Files.isRegularFile(chemin) && nomFichierValide.fichierValide(chemin.toString());
     }

@@ -1,16 +1,16 @@
-package domain.imports.gestionnaires;
+package domain.imports.services;
 
 import domain.core.valeurs.Room;
+import domain.imports.dossiers.NomFichierValide;
 import domain.imports.gestionnaires.winamax.NomFichierValideWinamax;
 import domain.imports.parsing.ImportFichierWinamax;
-import domain.imports.services.ImportFichierService;
 
 /**
  * fabrique des services internes qui seront utilisés par les gestionnaires
  */
-class FabriqueServicesRoom {
+class DomainServicesGestionnaireFabrique {
     private final Room room;
-    public FabriqueServicesRoom(Room room) {
+    public DomainServicesGestionnaireFabrique(Room room) {
         this.room = room;
     }
 

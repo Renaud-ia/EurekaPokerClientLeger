@@ -1,6 +1,6 @@
 package domain.imports.gestionnaires.winamax;
 
-import domain.imports.gestionnaires.NomFichierValide;
+import domain.imports.dossiers.NomFichierValide;
 
 public class NomFichierValideWinamax implements NomFichierValide {
     @Override

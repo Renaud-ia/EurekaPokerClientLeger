@@ -1,23 +1,28 @@
 package domain.imports.dossiers;
 
-import domain.imports.gestionnaires.NomFichierValide;
+import domain.imports.enregistrement.ObservateurImportParties;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class GestionnaireDossiers {
     int N_FICHIERS_TESTES_PAR_DOSSIER = 5;
+    private final PersistenceDossierRoom persistenceDossierRoom;
+    private final ObservateurDossierImport observateurDossierImport;
     private final List<String> dossiersAjoutes;
     private final NomFichierValide nomFichierValide;
-    public GestionnaireDossiers(NomFichierValide nomFichierValide) {
-        // todo gérer récupération depuis persistence
-        this.dossiersAjoutes = new ArrayList<>();
+    public GestionnaireDossiers(
+            ObservateurDossierImport observateurDossierImport,
+            PersistenceDossierRoom persistenceDossierRoom,
+            NomFichierValide nomFichierValide) {
+        this.observateurDossierImport = observateurDossierImport;
+        this.persistenceDossierRoom = persistenceDossierRoom;
+        this.dossiersAjoutes = persistenceDossierRoom.obtListDossiers();
         this.nomFichierValide = nomFichierValide;
     }
     /**
@@ -39,8 +44,12 @@ public class GestionnaireDossiers {
 
         remplacerDossierEnfants(cheminDossier);
 
-        dossiersAjoutes.add(cheminDossier);
+        procedureAjoutDossier(cheminDossier);
         return null;
+    }
+
+    public void supprimerDossier(String cheminDossier) {
+        procedureRetraitDossier(cheminDossier, true);
     }
 
 
@@ -48,14 +57,13 @@ public class GestionnaireDossiers {
     private void remplacerDossierEnfants(String cheminDossier) {
         Path cheminDossierPath = Paths.get(cheminDossier);
 
-        // Utiliser un itérateur pour supprimer les éléments en cours de parcours
         Iterator<String> iterator = dossiersAjoutes.iterator();
         while (iterator.hasNext()) {
             Path cheminExistantPath = Paths.get(iterator.next());
 
-            // Vérifier si le dossier existant est un sous-dossier du dossier à remplacer
             if (cheminExistantPath.startsWith(cheminDossierPath) && !cheminExistantPath.equals(cheminDossierPath)) {
-                iterator.remove(); // Supprimer le sous-dossier
+                procedureRetraitDossier(cheminExistantPath.toString(), false);
+                iterator.remove();
             }
         }
     }
@@ -120,5 +128,17 @@ public class GestionnaireDossiers {
 
     public List<String> obtListeDossiers() {
         return dossiersAjoutes;
+    }
+
+    private void procedureAjoutDossier(String nomDossier) {
+        persistenceDossierRoom.ajouterDossier(nomDossier);
+        observateurDossierImport.dossierAjoute(nomDossier);
+        dossiersAjoutes.add(nomDossier);
+    }
+
+    private void procedureRetraitDossier(String nomDossier, boolean supprimerDeLaListe) {
+        persistenceDossierRoom.supprimerDossier(nomDossier);
+        observateurDossierImport.dossierSupprime(nomDossier);
+        if (supprimerDeLaListe) dossiersAjoutes.remove(nomDossier);
     }
 }

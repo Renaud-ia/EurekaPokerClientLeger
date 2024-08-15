@@ -6,4 +6,9 @@ public class ImportFichierWinamax extends ImportFichierService {
     public ImportFichierWinamax() {
         super(new LecteurFichierWinamax());
     }
+
+    @Override
+    protected void lireFichier() {
+        // todo
+    }
 }
