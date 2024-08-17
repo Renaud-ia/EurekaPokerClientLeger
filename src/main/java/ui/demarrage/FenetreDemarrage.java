@@ -7,9 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import ui.modeles.FenetreSecondaire;
 
-public class FenetreDemarrage implements FenetreSecondaire, NotificationDemarrage {
+public class FenetreDemarrage implements NotificationDemarrage {
 
     private final Stage stage;
     private final Label messageLabel;
@@ -26,12 +25,10 @@ public class FenetreDemarrage implements FenetreSecondaire, NotificationDemarrag
         stage.setScene(scene);
     }
 
-    @Override
     public void afficher() {
         stage.show();
     }
-
-    @Override
+    
     public void fermer() {
         stage.close();
     }

@@ -34,10 +34,11 @@ public class InitialisationApplication {
     public List<Room> roomsDisponibles() {
         return configRooms.obtRoomsDisponibles();
     }
+
     public ControleurImportRoom initialiserImportRoom(Room room,
                                                       NotificationGestionDossiersRoom notificationGestionDossiersRoom)
             throws InterruptedException, ErreurGestionRoom {
-        notificationDemarrage.changerMessageDemarrage("Initialisation de Winamax");
+        notificationDemarrage.changerMessageDemarrage("Initialisation de " + room.toString());
 
         ControleurImportRoom controleurImportRoom = null;
 
@@ -48,10 +49,10 @@ public class InitialisationApplication {
         controleurImportRoom = new ControleurImportRoomImpl(nouveauGestionnaire, notificationGestionDossiersRoom);
 
         this.controleurImportGlobal.ajouterControleurRoom(controleurImportRoom);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         notificationDemarrage.changerMessageDemarrage("On va faire une pause");
-        Thread.sleep(5000);
+        Thread.sleep(1000);
         notificationDemarrage.changerMessageDemarrage("On a fini la pause");
 
         return controleurImportRoom;
