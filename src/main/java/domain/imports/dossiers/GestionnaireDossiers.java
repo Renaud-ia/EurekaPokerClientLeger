@@ -1,7 +1,5 @@
 package domain.imports.dossiers;
 
-import domain.imports.enregistrement.ObservateurImportParties;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,14 +11,11 @@ import java.util.stream.Stream;
 public class GestionnaireDossiers {
     int N_FICHIERS_TESTES_PAR_DOSSIER = 5;
     private final PersistenceDossierRoom persistenceDossierRoom;
-    private final ObservateurDossierImport observateurDossierImport;
     private final List<String> dossiersAjoutes;
     private final NomFichierValide nomFichierValide;
     public GestionnaireDossiers(
-            ObservateurDossierImport observateurDossierImport,
             PersistenceDossierRoom persistenceDossierRoom,
             NomFichierValide nomFichierValide) {
-        this.observateurDossierImport = observateurDossierImport;
         this.persistenceDossierRoom = persistenceDossierRoom;
         this.dossiersAjoutes = persistenceDossierRoom.obtListDossiers();
         this.nomFichierValide = nomFichierValide;
@@ -132,13 +127,11 @@ public class GestionnaireDossiers {
 
     private void procedureAjoutDossier(String nomDossier) {
         persistenceDossierRoom.ajouterDossier(nomDossier);
-        observateurDossierImport.dossierAjoute(nomDossier);
         dossiersAjoutes.add(nomDossier);
     }
 
     private void procedureRetraitDossier(String nomDossier, boolean supprimerDeLaListe) {
         persistenceDossierRoom.supprimerDossier(nomDossier);
-        observateurDossierImport.dossierSupprime(nomDossier);
         if (supprimerDeLaListe) dossiersAjoutes.remove(nomDossier);
     }
 }

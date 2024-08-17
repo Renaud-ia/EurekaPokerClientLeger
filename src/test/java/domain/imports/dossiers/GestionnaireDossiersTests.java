@@ -1,5 +1,6 @@
 package domain.imports.dossiers;
 
+import application.notifications.NotificationGestionDossiersRoom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -17,7 +18,7 @@ import static org.mockito.Mockito.when;
 public class GestionnaireDossiersTests {
     private PersistenceDossierRoom persistenceDossierRoom;
     private GestionnaireDossiers gestionnaireDossiers;
-    private ObservateurDossierImport observateurDossierImport;
+    private NotificationGestionDossiersRoom notificationGestionDossiersRoom;
 
     @BeforeEach
     public void setUp() {
@@ -34,10 +35,7 @@ public class GestionnaireDossiersTests {
         persistenceDossierRoom = Mockito.mock(PersistenceDossierRoom.class);
         when(persistenceDossierRoom.obtListDossiers()).thenReturn(new ArrayList<String>());
 
-        // on mock l'observateur
-        observateurDossierImport = Mockito.mock(ObservateurDossierImport.class);
-
-        gestionnaireDossiers = new GestionnaireDossiers(observateurDossierImport, persistenceDossierRoom, nomFichierValide);
+        gestionnaireDossiers = new GestionnaireDossiers(persistenceDossierRoom, nomFichierValide);
     }
 
     @Test

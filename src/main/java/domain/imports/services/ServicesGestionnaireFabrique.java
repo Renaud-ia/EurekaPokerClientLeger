@@ -1,10 +1,8 @@
 package domain.imports.services;
 
-import domain.imports.dossiers.ObservateurDossierImport;
-import domain.imports.dossiers.PersistenceDossierRoom;
 import domain.core.valeurs.Room;
 import domain.imports.dossiers.NomFichierValide;
-import domain.imports.enregistrement.ObservateurImportParties;
+import domain.imports.dossiers.PersistenceDossierRoom;
 import domain.imports.enregistrement.PersistenceImportParties;
 
 public abstract class ServicesGestionnaireFabrique {
@@ -23,11 +21,8 @@ public abstract class ServicesGestionnaireFabrique {
         return domainServicesGestionnaireFabrique.obtImportFichierService();
     }
 
-    public abstract PersistenceDossierRoom obtPersistenceDossiers();
-
-    public abstract ObservateurDossierImport obtObservateurDossiers();
-
     public abstract PersistenceImportParties obtPersistenceImportParties();
 
-    public abstract ObservateurImportParties obtOservateurImportParties();
+    public abstract PersistenceDossierRoom obtPersistenceDossiers();
+
 }

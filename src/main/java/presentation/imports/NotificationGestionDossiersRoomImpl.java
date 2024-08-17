@@ -1,8 +1,8 @@
 package presentation.imports;
 
-import domain.imports.dossiers.ObservateurDossierImport;
+import application.notifications.NotificationGestionDossiersRoom;
 
-public class ObservateurDossierImportImpl implements ObservateurDossierImport {
+public class NotificationGestionDossiersRoomImpl implements NotificationGestionDossiersRoom {
     @Override
     public void dossierAjoute(String nomDossier) {
 

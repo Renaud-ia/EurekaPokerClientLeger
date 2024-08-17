@@ -9,10 +9,10 @@ repositories {
 
 javafx {
     version = "22.0.2"
-    modules = mutableListOf("javafx.base", "javafx.controls", "javafx.graphics", "javafx.fxml")
+    modules = mutableListOf("javafx.base", "javafx.controls", "javafx.graphics")
 }
 
-group = "org.example"
+group = "fr.eureka-poker"
 version = "0.1-SNAPSHOT"
 
 dependencies {

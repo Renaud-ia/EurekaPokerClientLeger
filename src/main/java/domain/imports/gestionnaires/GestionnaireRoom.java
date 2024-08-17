@@ -1,11 +1,9 @@
 package domain.imports.gestionnaires;
 
 import domain.imports.dossiers.NomFichierValide;
-import domain.imports.dossiers.ObservateurDossierImport;
 import domain.imports.dossiers.PersistenceDossierRoom;
 import domain.imports.dossiers.GestionnaireDossiers;
 import domain.imports.enregistrement.GestionnaireParties;
-import domain.imports.enregistrement.ObservateurImportParties;
 import domain.imports.enregistrement.PersistenceImportParties;
 import domain.imports.services.AutoDetectionService;
 import domain.imports.services.ImportFichierService;
@@ -33,12 +31,10 @@ public abstract class GestionnaireRoom {
 
         NomFichierValide nomFichierValide = servicesGestionnaireFabrique.obtNomFichierValide();
         PersistenceDossierRoom persistenceDossierRoom = servicesGestionnaireFabrique.obtPersistenceDossiers();
-        ObservateurDossierImport observateurDossierImport = servicesGestionnaireFabrique.obtObservateurDossiers();
-        this.gestionnaireDossiers = new GestionnaireDossiers(observateurDossierImport, persistenceDossierRoom, nomFichierValide);
+        this.gestionnaireDossiers = new GestionnaireDossiers(persistenceDossierRoom, nomFichierValide);
 
         PersistenceImportParties persistenceImportParties = servicesGestionnaireFabrique.obtPersistenceImportParties();
-        ObservateurImportParties observateurImportParties = servicesGestionnaireFabrique.obtOservateurImportParties();
-        this.gestionnaireParties = new GestionnaireParties(persistenceImportParties, observateurImportParties);
+        this.gestionnaireParties = new GestionnaireParties(persistenceImportParties);
     }
 
     /**

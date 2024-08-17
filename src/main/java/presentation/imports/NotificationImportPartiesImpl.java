@@ -3,11 +3,11 @@ package presentation.imports;
 import domain.core.valeurs.IdentifiantPartie;
 import domain.core.valeurs.MainPoker;
 import domain.core.valeurs.Partie;
-import domain.imports.enregistrement.ObservateurImportParties;
+import application.notifications.NotificationImportParties;
 
 import java.util.List;
 
-public class ObservateurImportPartiesImpl implements ObservateurImportParties {
+public class NotificationImportPartiesImpl implements NotificationImportParties {
     @Override
     public void partieAjoutee(Partie partie, List<MainPoker> mainPokers) {
 

@@ -1,11 +1,8 @@
 package domain.imports.enregistrement;
 
-import domain.core.valeurs.Room;
-
 public class GestionnaireParties {
     public GestionnaireParties(
-            PersistenceImportParties persistenceParties,
-            ObservateurImportParties observateurImportParties) {
+            PersistenceImportParties persistenceParties) {
         // todo gérer la persistence
     }
 

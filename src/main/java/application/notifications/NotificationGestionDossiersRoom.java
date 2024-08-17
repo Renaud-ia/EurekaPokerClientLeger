@@ -1,6 +1,6 @@
-package domain.imports.dossiers;
+package application.notifications;
 
-public interface ObservateurDossierImport {
+public interface NotificationGestionDossiersRoom {
     void dossierAjoute(String nomDossier);
     void dossierSupprime(String nomDossier);
 }
